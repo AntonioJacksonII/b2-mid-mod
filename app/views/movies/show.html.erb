@@ -3,7 +3,7 @@
 <p>Year: <%= @movie.year %></p>
 <p>Genre: <%= @movie.genre %></p>
 <p>Actors: <%= @movie.stars %></p>
-<p>Average Actor Age: <%= @movie.actors.average_age %></p>
+<p>Average Actor Age: <%= @movie.actors.average_age.round(2) %></p>
 
 <h2>Add an Actor</h2>
 <p>
