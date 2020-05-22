@@ -32,13 +32,15 @@ describe "Actor Show Page", type: :feature do
 
     expect(page).to have_content("Meryl Streep")
     expect(page).to have_content("Age: 70")
-    expect(page).to have_content("Actors Worked With: Anne Hathaway, Al Pacino")
+    expect(page).to have_content("Anne Hathaway")
+    expect(page).to have_content("Al Pacino")
 
     visit "/actors/#{@anne.id}"
 
     expect(page).to have_content("Anne Hathaway")
     expect(page).to have_content("Age: 30")
-    expect(page).to have_content("Actors Worked With: Lindsay Lohan, Meryl Streep")
+    expect(page).to have_content("Lindsay Lohan")
+    expect(page).to have_content("Meryl Streep")
   end
 end
 
