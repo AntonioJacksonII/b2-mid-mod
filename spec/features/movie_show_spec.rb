@@ -43,12 +43,32 @@ describe "Movie Show Page", type: :feature do
     expect(page).to have_content("Genre: Action")
     expect(page).to have_content("Actors: Meryl Streep, Al Pacino")
     expect(page).to have_content("Average Actor Age: 75")
-
   end
+
+  it "it shows a form to enter an actor's name that adds the actor to the movie" do
+    visit "/movies/#{@apes.id}"
+
+    fill_in :name, with: "Al Pacino"
+    click_button "Add Actor"
+
+    expect(current_path).to eq("/movies/#{@apes.id}")
+    expect(page).to have_content("Actors: Lindsay Lohan, Anne Hathaway, Al Pacino")
+
+    visit "/movies/#{@godfather.id}"
+
+    fill_in :name, with: "Anne Hathaway"
+    click_button "Add Actor"
+
+    expect(current_path).to eq("/movies/#{@godfather.id}")
+    expect(page).to have_content("Actors: Anne Hathaway, Meryl Streep, Al Pacino")
+  end
+
 end
 
 # As a visitor,
-# When I visit a movie’s show page.
-# I see the movie’s title, creation year, and genre,
-# and a list of all its actors from youngest to oldest.
-# And I see the average age of all of the movie’s actors
+# When I visit a movie show page,
+# I see a form for an actors name
+# and when I fill in the form with an existing actor’s name
+# I am redirected back to that movie’s show page
+# And I see the actor’s name listed
+# (This should not break story 3, You do not have to test for a sad path)
