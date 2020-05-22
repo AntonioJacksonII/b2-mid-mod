@@ -14,7 +14,7 @@ describe "Studio Index Page", type: :feature do
     visit "/studios"
   end
 
-  it 'it shows a list of all movie studies with their movies' do
+  it 'it shows a list of all movie studios with their movies' do
     expect(page).to have_content("CBS Studios")
     expect(page).to have_content("Movies: Planet of the Apes, Mean Girls")
 
@@ -25,8 +25,3 @@ describe "Studio Index Page", type: :feature do
     expect(page).to have_content("Movies: The Godfather")
   end
 end
-
-# As a visitor,
-# When I visit the studio index page
-# I see a list of all of the movie studios
-# And underneath each studio, I see the names of all of its movies.
